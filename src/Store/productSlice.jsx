@@ -1,0 +1,41 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+// Função para carregar os produtos do localStorage
+const loadProductsFromLocalStorage = () => {
+  try {
+    const serializedProducts = localStorage.getItem("products");
+    if (serializedProducts === null) {
+      return [];
+    }
+    return JSON.parse(serializedProducts);
+  } catch (error) {
+    console.error("Erro ao carregar produtos do localStorage:", error);
+    return [];
+  }
+};
+
+// Função para salvar os produtos no localStorage
+const saveProductsToLocalStorage = (products) => {
+  try {
+    const serializedProducts = JSON.stringify(products);
+    localStorage.setItem("products", serializedProducts);
+  } catch (error) {
+    console.error("Erro ao salvar produtos no localStorage:", error);
+  }
+};
+
+const productSlice = createSlice({
+  name: "products",
+  initialState: {
+    items: loadProductsFromLocalStorage(),
+  },
+  reducers: {
+    addProduct: (state, action) => {
+      state.items.push(action.payload); // Adiciona o produto ao estado
+      saveProductsToLocalStorage(state.items); // Salva no localStorage
+    },
+  },
+});
+
+export const { addProduct } = productSlice.actions;
+export default productSlice.reducer;
