@@ -1,12 +1,43 @@
-# React + Vite
+# Aplicação de Gerenciamento de Clientes, Produtos e Pedidos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição do Projeto
 
-Currently, two official plugins are available:
+O objetivo principal deste projeto é desenvolver uma aplicação que permite o cadastro e gerenciamento de clientes, produtos e pedidos. Os dados são armazenados localmente utilizando `localStorage`, garantindo que as informações persistam mesmo após o fechamento do navegador. A aplicação é construída com React e utiliza várias bibliotecas modernas para garantir uma experiência de usuário eficiente e agradável.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+### Clientes
+1. **Cadastro de Clientes**
+   - Campos: Nome, CNPJ, Telefone, CEP (com auto-preenchimento dos campos de endereço utilizando a API do ViaCEP), Estado, Cidade, Bairro, Endereço, Número.
+2. **Listagem de Clientes**
+   - Lista todos os clientes cadastrados.
+   - Cada cliente na lista é um item clicável.
+3. **Detalhamento de Clientes**
+   - Ao clicar em um cliente, uma nova tela mostra todos os detalhes do cliente selecionado, incluindo todas as informações cadastradas.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Produtos
+1. **Cadastro de Produtos**
+   - Campos: Nome, Valor, Upload de Foto do produto.
+2. **Listagem de Produtos**
+   - Lista todos os produtos cadastrados.
+   - Cada produto na lista é um item clicável.
+3. **Detalhamento de Produtos**
+   - Selecionando um produto, será exibida uma tela com detalhes, incluindo nome, valor e foto do produto.
+
+### Pedidos
+1. **Cadastro de Pedidos**
+   - Seleção de Cliente (escolhido da lista de clientes cadastrados).
+   - Data do Pedido.
+   - Carrinho de Produtos (seleção de produtos da lista de produtos cadastrados).
+2. **Listagem de Pedidos**
+   - Mostra todos os pedidos realizados em uma lista.
+
+## Bibliotecas Utilizadas
+
+- **React**: Biblioteca principal para o desenvolvimento do aplicativo.
+- **Redux Toolkit**: Para gerenciamento eficiente do estado da aplicação.
+- **React Hook Form**: Auxilia na manipulação e gerenciamento de formulários.
+- **Yup**: Utilizado para adicionar validações aos formulários.
+- **Styled Components**: Para estilização dos componentes.
+- **Axios**: Para realizar requisições HTTP, por exemplo, para a API do ViaCEP.
+- **localStorage**: Para o armazenamento local dos dados.
