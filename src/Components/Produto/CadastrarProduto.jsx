@@ -4,24 +4,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../Store/productSlice.jsx";
 import { ValidacaoSchema } from "../../Schemas/ProdutoSchema.jsx";
+import { SubmitButton } from "../SubmitButton/submitButton";
+import Modal from "../Modal/modal";
+
+import UploadContainer from "../UploadContainer/uploadContainer.jsx"; // Novo componente importado
 import {
-  ModalOverlay,
-  CadastroContainer,
-  Titulo,
-  Campo,
   Label,
-  Input,
   TextArea,
-  UploadContainer,
-  UploadLabel,
-  UploadInput,
-  UploadBox,
-  UploadText,
-  BotaoSalvar,
-  InputContainer,
   DescricaoContainer,
-  FecharBotao,
 } from "./CadastrarProduto.styles.jsx";
+import { FormField, FormFieldGroup } from "../FormField/formField.jsx";
 
 const CadastroProduto = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -88,62 +80,48 @@ const CadastroProduto = ({ onClose }) => {
   };
 
   return (
-    <ModalOverlay>
-      <CadastroContainer>
-        <Titulo>Cadastrar produto</Titulo>
-        <FecharBotao onClick={onClose}>X</FecharBotao>
+    <Modal title="Cadastrar Produto" onClose={onClose}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormFieldGroup columns={2}>
+          <FormField
+            type="text"
+            register={register}
+            name="nome"
+            placeholder="Nome do Produto"
+            errors={errors}
+            rows={4}
+          />
+          <FormField
+            type="number"
+            register={register}
+            name="preco"
+            placeholder="Preço"
+            errors={errors}
+          />
+        </FormFieldGroup>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Campo>
-            <InputContainer>
-              <Label>Nome</Label>
-              <Input type="text" placeholder="Digite o nome" {...register("nome")} />
-              {errors.nome && <span style={{ color: "red" }}>{errors.nome.message}</span>}
-            </InputContainer>
+        <FormFieldGroup columns={1}>
+          <FormField
+            register={register}
+            name="descricao"
+            placeholder="Descrição completa"
+            errors={errors}
+            multiline={true}
+            rows={4}
+          />
+        </FormFieldGroup>
+        <UploadContainer
+          control={control}
+          errors={errors}
+          fileInputRef={fileInputRef}
+          handleUploadBoxClick={handleUploadBoxClick}
+          handleFileChange={handleFileChange}
+          fileName={fileName}
+        />
 
-            <InputContainer>
-              <Label>Preço</Label>
-              <Input type="number" placeholder="Digite o preço" {...register("preco")} />
-              {errors.preco && <span style={{ color: "red" }}>{errors.preco.message}</span>}
-            </InputContainer>
-          </Campo>
-
-          <DescricaoContainer>
-            <Label>Descrição</Label>
-            <TextArea placeholder="Digite a descrição" rows={4} {...register("descricao")} />
-            {errors.descricao && <span style={{ color: "red" }}>{errors.descricao.message}</span>}
-          </DescricaoContainer>
-
-          <UploadContainer>
-            <UploadLabel htmlFor="foto">Foto do produto</UploadLabel>
-            <UploadBox onClick={handleUploadBoxClick}>
-              <Controller
-                name="foto"
-                control={control}
-                defaultValue=""
-                render={({ field: { onChange } }) => (
-                  <UploadInput
-                    type="file"
-                    accept="image/jpeg, image/png"
-                    id="foto"
-                    ref={fileInputRef}
-                    onChange={(e) => handleFileChange(e, onChange)}
-                  />
-                )}
-              />
-              <UploadText>
-                Arraste e solte ou clique para fazer o upload da foto
-              </UploadText>
-              <UploadText>JPG e PNG, somente</UploadText>
-              {fileName && <UploadText>Arquivo selecionado: {fileName}</UploadText>}
-            </UploadBox>
-            {errors.foto && <span style={{ color: "red" }}>{errors.foto.message}</span>}
-          </UploadContainer>
-
-          <BotaoSalvar type="submit">Salvar</BotaoSalvar>
-        </form>
-      </CadastroContainer>
-    </ModalOverlay>
+        <SubmitButton>Cadastrar</SubmitButton>
+      </form>
+    </Modal>
   );
 };
 

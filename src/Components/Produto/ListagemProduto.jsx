@@ -1,21 +1,10 @@
+// ListagemProdutos.js (arquivo principal)
 import React, { useState } from "react";
-import { FiPlus } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import CadastrarProduto from "./CadastrarProduto";
 import DetalharProduto from "./DetalharProduto";
-import {
-  SearchButtonContainer,
-  SearchInputContainer,
-  SearchIcon,
-  SearchInput,
-  NovoProdutoButton,
-  ProdutosContainer,
-  ListaProdutos,
-  ProdutoItem,
-  ProdutoImagem,
-  NomeProduto,
-  ProdutoPreco,
-} from "./ListagemProduto.styles";
+import SearchBar from "../SearchBarContainer/SearchBarContainer.jsx";
+import ProductContainer from "../ProductContainer/productContainer.jsx";
 
 const ListagemProdutos = () => {
   const [mostrarCadastroProduto, setMostrarCadastroProduto] = useState(false);
@@ -29,59 +18,22 @@ const ListagemProdutos = () => {
 
   return (
     <>
-      <SearchButtonContainer>
-        <SearchInputContainer>
-          <SearchIcon />
-          <SearchInput
-            type="text"
-            placeholder="Digite o nome do produto..."
-            value={termoPesquisa}
-            onChange={(e) => setTermoPesquisa(e.target.value)}
-          />
-        </SearchInputContainer>
-
-        <NovoProdutoButton onClick={() => setMostrarCadastroProduto(true)}>
-          <FiPlus />
-          Novo Produto
-        </NovoProdutoButton>
-      </SearchButtonContainer>
+      <SearchBar
+        placeholder="Digite o nome do cliente..."
+        value={termoPesquisa}
+        onChange={(e) => setTermoPesquisa(e.target.value)}
+        buttonText="Novo Produto"
+        onButtonClick={() => setMostrarCadastroProduto(true)}
+      />
 
       {mostrarCadastroProduto && (
         <CadastrarProduto onClose={() => setMostrarCadastroProduto(false)} />
       )}
 
-      <ProdutosContainer>
-        <ListaProdutos>
-          {produtosFiltrados.length === 0 ? (
-            <p>Nenhum produto encontrado.</p>
-          ) : (
-            produtosFiltrados.map((produto) => {
-              const fotoValida =
-                produto.foto &&
-                typeof produto.foto === "string" &&
-                produto.foto.startsWith("data:image");
-
-              return (
-                <ProdutoItem
-                  key={produto.id}
-                  onClick={() => setProdutoSelecionado(produto)}
-                >
-                  {fotoValida && (
-                    <ProdutoImagem
-                      src={produto.foto}
-                      alt={produto.nome || "Imagem do produto"}
-                    />
-                  )}
-                  {produto.nome && <NomeProduto>{produto.nome}</NomeProduto>}
-                  {produto.preco && (
-                    <ProdutoPreco>R$ {produto.preco.toFixed(2)}</ProdutoPreco>
-                  )}
-                </ProdutoItem>
-              );
-            })
-          )}
-        </ListaProdutos>
-      </ProdutosContainer>
+      <ProductContainer
+        produtos={produtosFiltrados}
+        onProdutoClick={setProdutoSelecionado}
+      />
 
       {produtoSelecionado && (
         <DetalharProduto

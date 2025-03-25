@@ -3,6 +3,7 @@ import { FiPlus } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import CadastrarPedido from './cadastrarPedido';
+import SearchBar from "../SearchBarContainer/SearchBarContainer.jsx";
 import {
   SearchButtonContainer,
   SearchInputContainer,
@@ -39,22 +40,13 @@ function ListagemPedido() {
 
   return (
     <div>
-      <SearchButtonContainer>
-        <SearchInputContainer>
-          <SearchIcon />
-          <SearchInput
-            type="text"
-            placeholder="Digite o nome do cliente..."
-            value={termoPesquisa}
-            onChange={(e) => setTermoPesquisa(e.target.value)}
-          />
-        </SearchInputContainer>
-
-        <NovoClienteButton onClick={() => setMostrarCadastro(true)}>
-          <FiPlus /> 
-          Novo Pedido
-        </NovoClienteButton>
-      </SearchButtonContainer>
+      <SearchBar
+        placeholder="Digite o nome do cliente..."
+        value={termoPesquisa}
+        onChange={(e) => setTermoPesquisa(e.target.value)}
+        buttonText="Novo Pedido"
+        onButtonClick={() => setMostrarCadastro(true)}
+      />  
 
       {mostrarCadastro && <CadastrarPedido onClose={() => setMostrarCadastro(false)} />}
 
