@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { addClient } from '../../Store/clienteSlice';
-import Modal from '../Modal/modal';
-import { FormField, FormFieldGroup } from '../FormField/formField';
-import { SubmitButton } from '../SubmitButton/submitButton';
+import Modal from '../../Components/Modal/modal';
+import { FormField, FormFieldGroup } from '../../Components/FormField/formField';
+import { SubmitButton } from '../../Components/SubmitButton/submitButton';
 import { useCep } from '../../hooks/useCep';
 import { ValidacaoSchema } from '../../Schemas/ValidacaoSchema';
 
-const CadastroCliente = ({ onClose }) => {
+const ClientCreate = ({ onClose }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -117,4 +117,4 @@ const CadastroCliente = ({ onClose }) => {
   );
 };
 
-export default CadastroCliente;
+export default ClientCreate;

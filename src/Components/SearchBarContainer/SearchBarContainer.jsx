@@ -7,7 +7,7 @@ import {
 } from "./SearchBarContainer.styles";
 import RegisterButton from '../RegisterButton/registerButton'
 
-function SearchBar({ placeholder, value, onChange, buttonText, onButtonClick }) {
+function SearchBar({ placeholder, value, onChange, buttonText, onButtonClick, showButton = false }) {
   return (
     <Container>
       <SearchInputContainer>
@@ -19,7 +19,9 @@ function SearchBar({ placeholder, value, onChange, buttonText, onButtonClick }) 
           onChange={onChange}
         />
       </SearchInputContainer>
-      <RegisterButton onClick={onButtonClick}>{buttonText}</RegisterButton>
+      {!showButton && (
+        <RegisterButton onClick={onButtonClick}>{buttonText}</RegisterButton>
+      )}
     </Container>
   );
 }

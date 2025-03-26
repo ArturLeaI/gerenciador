@@ -1,12 +1,12 @@
 // ListagemProdutos.js (arquivo principal)
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import CadastrarProduto from "./CadastrarProduto";
-import DetalharProduto from "./DetalharProduto";
-import SearchBar from "../SearchBarContainer/SearchBarContainer.jsx";
-import ProductContainer from "../ProductContainer/productContainer.jsx";
+import ProductCreate from "./productCreate.jsx";
+import ProductDetail from "./productDetail.jsx";
+import SearchBar from "../../Components/SearchBarContainer/SearchBarContainer.jsx";
+import ProductContainer from "../../Components/ProductContainer/productContainer.jsx";
 
-const ListagemProdutos = () => {
+const ProductHome = () => {
   const [mostrarCadastroProduto, setMostrarCadastroProduto] = useState(false);
   const [termoPesquisa, setTermoPesquisa] = useState("");
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
@@ -27,7 +27,7 @@ const ListagemProdutos = () => {
       />
 
       {mostrarCadastroProduto && (
-        <CadastrarProduto onClose={() => setMostrarCadastroProduto(false)} />
+        <ProductCreate onClose={() => setMostrarCadastroProduto(false)} />
       )}
 
       <ProductContainer
@@ -36,7 +36,7 @@ const ListagemProdutos = () => {
       />
 
       {produtoSelecionado && (
-        <DetalharProduto
+        <ProductDetail
           produto={produtoSelecionado}
           onClose={() => setProdutoSelecionado(null)}
         />
@@ -45,4 +45,4 @@ const ListagemProdutos = () => {
   );
 };
 
-export default ListagemProdutos;
+export default ProductHome;

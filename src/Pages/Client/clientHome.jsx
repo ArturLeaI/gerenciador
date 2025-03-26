@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import CadastroCliente from "./CadastrarCliente.jsx";
-import {ClientList} from '../ClientList/clientList.jsx' 
-import DetalharCliente from "./DetalharCliente.jsx";
-import SearchBar from "../SearchBarContainer/SearchBarContainer.jsx";
+import ClientCreate from "./clientCreate.jsx";
+import {ClientList} from '../../Components/ClientList/clientList.jsx' 
+import ClientDetail from "./ClientDetail.jsx";
+import SearchBar from "../../Components/SearchBarContainer/SearchBarContainer.jsx";
 
-const ListagemClientes = () => {
+const ClientHome = () => {
   const [mostrarCadastro, setMostrarCadastro] = useState(false);
   const [clienteSelecionado, setClienteSelecionado] = useState(null);
   const [termoPesquisa, setTermoPesquisa] = useState("");
@@ -29,7 +29,7 @@ const ListagemClientes = () => {
       />
 
       {mostrarCadastro && (
-        <CadastroCliente onClose={() => setMostrarCadastro(false)} />
+        <ClientCreate onClose={() => setMostrarCadastro(false)} />
       )}
 
       <ClientList
@@ -38,7 +38,7 @@ const ListagemClientes = () => {
       />
 
       {clienteSelecionado && (
-        <DetalharCliente
+        <ClientDetail
           cliente={clienteSelecionado}
           onClose={() => setClienteSelecionado(null)}
         />
@@ -47,4 +47,4 @@ const ListagemClientes = () => {
   );
 };
 
-export default ListagemClientes;
+export default ClientHome;

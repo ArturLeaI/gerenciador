@@ -4,18 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../Store/productSlice.jsx";
 import { ValidacaoSchema } from "../../Schemas/ProdutoSchema.jsx";
-import { SubmitButton } from "../SubmitButton/submitButton";
-import Modal from "../Modal/modal";
+import { SubmitButton } from "../../Components/SubmitButton/submitButton.jsx";
+import Modal from "../../Components/Modal/modal.jsx";
+import UploadContainer from "../../Components/UploadContainer/uploadContainer.jsx";
+import { FormField, FormFieldGroup } from "../../Components/FormField/formField.jsx";
 
-import UploadContainer from "../UploadContainer/uploadContainer.jsx"; // Novo componente importado
-import {
-  Label,
-  TextArea,
-  DescricaoContainer,
-} from "./CadastrarProduto.styles.jsx";
-import { FormField, FormFieldGroup } from "../FormField/formField.jsx";
-
-const CadastroProduto = ({ onClose }) => {
+const ProductCreate = ({ onClose }) => {
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
   const [fileName, setFileName] = useState("");
@@ -125,4 +119,4 @@ const CadastroProduto = ({ onClose }) => {
   );
 };
 
-export default CadastroProduto;
+export default ProductCreate;

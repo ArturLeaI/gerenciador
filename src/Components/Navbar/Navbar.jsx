@@ -5,11 +5,9 @@ import {
   ConteudoContainer,
 } from "./Navbar.styles";
 import { CiShoppingCart, CiViewList, CiUser } from "react-icons/ci";
-import ListagemClientes from "../Cliente/ListagemCliente";
-import ListagemProduto from "../Produto/ListagemProduto";
-import ListagemPedido from "../Pedido/listagemPedido";
-import SearchBar from "../SearchBarContainer/SearchBarContainer"
-import RegisterButton from "../RegisterButton/registerButton";
+import ClientHome from "../../Pages/Client/ClientHome";
+import OrderHome from "../../Pages/Order/OrderHome";
+import ProductHome from "../../Pages/Product/productHome";
 
 
 const Navbar = () => {
@@ -18,13 +16,11 @@ const Navbar = () => {
   const renderizarConteudo = () => {
     switch (abaAtiva) {
       case "clientes":
-        return <ListagemClientes />;
+        return <ClientHome />;
       case "produtos":
-        return <ListagemProduto />;
+        return < ProductHome/>;
       case "pedidos":
-        return <ListagemPedido />;
-      case "teste":
-        return <ListagemPedido/>
+        return <OrderHome/>;
       default:
         return null;
     }
@@ -50,13 +46,6 @@ const Navbar = () => {
           onClick={() => setAbaAtiva("pedidos")}
         >
           <CiShoppingCart /> Pedidos
-        </NavbarButton>
-
-        <NavbarButton
-          className={abaAtiva === "teste" ? "ativo" : ""}
-          onClick={() => setAbaAtiva("teste")}
-        >
-          <CiShoppingCart /> teste
         </NavbarButton>
       </NavbarContainer>
       <ConteudoContainer>{renderizarConteudo()}</ConteudoContainer>
