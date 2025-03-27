@@ -38,7 +38,6 @@ const SaveButton = styled.button`
   }
 `;
 
-// Componente principal
 const ModalFooter = ({ subtotal, errorMessage, onSave }) => {
   return (
     <FooterContainer>

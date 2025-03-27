@@ -34,5 +34,5 @@ export const ErrorText = styled.p`
   color: #d32f2f;
   font-size: 0.875rem;
   margin: 0;
-  white-space: pre-line; // Para manter as quebras de linha
+  white-space: pre-line;
 `;

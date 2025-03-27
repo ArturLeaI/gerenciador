@@ -15,7 +15,7 @@ const camposCliente = [
   { key: "numero", label: "Numero" },
 ];
 
-const DetalharCliente = ({ cliente, onClose }) => {
+const ClientDetail = ({ cliente, onClose }) => {
   return (
     <Modal title="Detalhes do Cliente" onClose={onClose}>
         <Detail dados={cliente} campos={camposCliente} /> 
@@ -23,4 +23,4 @@ const DetalharCliente = ({ cliente, onClose }) => {
   );
 };
 
-export default DetalharCliente;
+export default ClientDetail;

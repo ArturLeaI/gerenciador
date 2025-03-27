@@ -13,7 +13,7 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
   animation: fadeIn 0.3s ease-out;
   
-  /* REMOVIDO: pointer-events: none */
+  /* REMOVEMOS TODAS AS PROPRIEDADES pointer-events */
   
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -31,7 +31,8 @@ export const ModalContainer = styled.div`
   position: relative;
   overflow-y: auto;
   
-  /* MANTIDO: pointer-events: all (opcional, já é o padrão) */
+  /* OPCIONAL: Evita que clicks vazem para o overlay */
+  pointer-events: auto;
   
   @media (max-width: 768px) {
     width: 80%;
@@ -49,8 +50,6 @@ export const ModalHeader = styled.div`
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #007bff;
-  
-  /* Fixa o header quando houver scroll */
   position: sticky;
   top: 0;
   background: white;

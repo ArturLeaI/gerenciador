@@ -16,7 +16,6 @@ const clientsSlice = createSlice({
   reducers: {
     addClient: (state, action) => {
       state.clients.push(action.payload);
-      // Salva no localStorage
       localStorage.setItem('clients', JSON.stringify(state.clients));
     }
   }

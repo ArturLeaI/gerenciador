@@ -19,11 +19,10 @@ export const ClientCard = ({
   const nome = cliente?.nome || pedido?.cliente?.nome || 'Cliente não informado';
   const cnpj = cliente?.cnpj || pedido?.cliente?.cnpj || '--';
   
-  // Calcula o total de itens
   const totalItens = pedido?.produtos?.reduce((total, produto) => 
     total + (produto.quantidade || 0), 0) || 0;
   
-  // Calcula o valor total corretamente (usando subtotal se existir, senão calcula)
+
   const calcularValorTotal = () => {
     if (pedido?.total) {
       return pedido.total;
@@ -31,7 +30,7 @@ export const ClientCard = ({
     if (pedido?.subtotal) {
       return pedido.subtotal;
     }
-    // Calcula manualmente se não tiver total/subtotal
+
     return pedido?.produtos?.reduce((total, produto) => 
       total + (produto.preco * produto.quantidade), 0) || 0;
   };

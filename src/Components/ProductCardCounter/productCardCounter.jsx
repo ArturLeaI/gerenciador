@@ -22,7 +22,7 @@ export const ProductCardCounter = ({
 
   const handleChange = (e) => {
     const value = parseInt(e.target.value) || 0;
-    onQuantityChange(value); // Agora espera apenas o valor
+    onQuantityChange(value);
   };
 
   return (

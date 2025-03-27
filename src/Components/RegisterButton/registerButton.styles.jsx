@@ -14,7 +14,7 @@ export const PlusButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
-  white-space: nowrap; /* Impede quebra de linha do texto */
+  white-space: nowrap;
 
   &:hover {
     background: #5a8fd3;
@@ -29,5 +29,4 @@ export const PlusButton = styled.button`
 export const PlusIcon = styled(FiPlus)`
   color: white;
   font-size: 16px;
-  /* Remova margin-right (já controlado pelo gap do PlusButton) */
 `;

@@ -14,7 +14,6 @@ const loadProductsFromLocalStorage = () => {
   }
 };
 
-// Função para salvar os produtos no localStorage
 const saveProductsToLocalStorage = (products) => {
   try {
     const serializedProducts = JSON.stringify(products);
@@ -31,8 +30,8 @@ const productSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
-      state.items.push(action.payload); // Adiciona o produto ao estado
-      saveProductsToLocalStorage(state.items); // Salva no localStorage
+      state.items.push(action.payload);
+      saveProductsToLocalStorage(state.items);
     },
   },
 });

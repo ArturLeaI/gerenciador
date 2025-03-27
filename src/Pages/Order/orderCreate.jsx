@@ -50,9 +50,8 @@ const OrderCreate = ({ onClose }) => {
 
   const salvarPedido = async () => {
     try {
-      setMensagemErro(""); // Limpa mensagens anteriores
+      setMensagemErro("");
   
-      // Verifica se há produtos selecionados
       const produtosSelecionados = produtosFiltrados
         .filter((produto) => quantidades[produto.id] > 0)
         .map((produto) => ({
@@ -62,7 +61,6 @@ const OrderCreate = ({ onClose }) => {
           preco: produto.preco,
         }));
   
-      // Validação com Yup
       const schema = Yup.object().shape({
         cliente: Yup.object()
           .required("Selecione um cliente.")
@@ -84,7 +82,6 @@ const OrderCreate = ({ onClose }) => {
         produtos: produtosSelecionados,
       }, { abortEarly: false });
   
-      // Se a validação passar, salva o pedido
       dispatch(adicionarPedido({
         cliente: clienteSelecionado,
         produtos: produtosSelecionados,
@@ -95,7 +92,7 @@ const OrderCreate = ({ onClose }) => {
       onClose();
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
-        // Junta todas as mensagens de erro em uma string
+
         const errorMessages = error.inner.map(err => err.message).join("\n");
         setMensagemErro(errorMessages);
       } else {
