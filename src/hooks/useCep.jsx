@@ -1,4 +1,3 @@
-// hooks/useCep.js
 import { useCallback } from 'react';
 
 export const useCep = (setValue) => {

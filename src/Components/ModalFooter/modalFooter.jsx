@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Estilos do ModalFooter
 const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;

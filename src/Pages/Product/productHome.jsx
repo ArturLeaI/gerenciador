@@ -1,4 +1,3 @@
-// ListagemProdutos.js (arquivo principal)
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCreate from "./productCreate.jsx";

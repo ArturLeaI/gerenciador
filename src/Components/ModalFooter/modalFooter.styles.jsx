@@ -20,7 +20,7 @@ export const ErrorMessage = styled.p`
   margin: 0 0 0.5rem 0;
   text-align: center;
 `;
-// No arquivo ModalFooter.styles.js
+
 export const ErrorContainer = styled.div`
   max-width: 250px;
   margin-bottom: 0.5rem;

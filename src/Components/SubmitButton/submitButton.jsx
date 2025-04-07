@@ -1,4 +1,3 @@
-// components/Form/SubmitButton.jsx
 import React from 'react';
 import { SubmitFormButton } from './submitButton.styles';
 

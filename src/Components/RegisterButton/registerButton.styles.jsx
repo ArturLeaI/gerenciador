@@ -4,7 +4,7 @@ import { FiPlus } from "react-icons/fi";
 export const PlusButton = styled.button`
   display: flex;
   align-items: center;
-  gap: 8px; /* Espaço entre ícone e texto */
+  gap: 8px;
   background: #3145fe;
   color: #fff;
   border: none;

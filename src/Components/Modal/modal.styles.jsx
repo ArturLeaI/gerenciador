@@ -13,8 +13,6 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
   animation: fadeIn 0.3s ease-out;
   
-  /* REMOVEMOS TODAS AS PROPRIEDADES pointer-events */
-  
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -30,8 +28,6 @@ export const ModalContainer = styled.div`
   padding: 2rem;
   position: relative;
   overflow-y: auto;
-  
-  /* OPCIONAL: Evita que clicks vazem para o overlay */
   pointer-events: auto;
   
   @media (max-width: 768px) {

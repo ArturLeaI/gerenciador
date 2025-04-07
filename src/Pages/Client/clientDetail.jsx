@@ -1,4 +1,3 @@
-// pages/DetalharCliente/DetalharCliente.jsx
 import React from "react";
 import Modal from "../../Components/Modal/modal";
 import Detail from "../../Components/ClientDetail/clientDetail";

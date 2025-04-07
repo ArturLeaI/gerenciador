@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Função para carregar os produtos do localStorage
 const loadProductsFromLocalStorage = () => {
   try {
     const serializedProducts = localStorage.getItem("products");

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Estilo da Navbar
 export const NavbarContainer = styled.nav`
   background-color: #fff;
   padding: 10px;
@@ -9,7 +8,6 @@ export const NavbarContainer = styled.nav`
   border-bottom: 1px solid #e0e0e0; 
 `;
 
-// Estilo dos botões
 export const NavbarButton = styled.button`
   background-color: transparent;
   color: #333; /* Cor do texto */
